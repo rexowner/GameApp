@@ -9,21 +9,27 @@
 /* Begin PBXBuildFile section */
 		AA234862272679AF00CD8A1B /* GameAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA23484F272679AF00CD8A1B /* GameAppApp.swift */; };
 		AA234863272679AF00CD8A1B /* GameAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA23484F272679AF00CD8A1B /* GameAppApp.swift */; };
-		AA234864272679AF00CD8A1B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA234850272679AF00CD8A1B /* ContentView.swift */; };
-		AA234865272679AF00CD8A1B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA234850272679AF00CD8A1B /* ContentView.swift */; };
 		AA234866272679AF00CD8A1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA234851272679AF00CD8A1B /* Assets.xcassets */; };
 		AA234867272679AF00CD8A1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA234851272679AF00CD8A1B /* Assets.xcassets */; };
+		AA23487127267A0A00CD8A1B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA23487027267A0A00CD8A1B /* ContentView.swift */; };
+		AA23487227267A0A00CD8A1B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA23487027267A0A00CD8A1B /* ContentView.swift */; };
+		AA23487427267A4400CD8A1B /* MemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA23487327267A4400CD8A1B /* MemoryGame.swift */; };
+		AA23487527267A4400CD8A1B /* MemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA23487327267A4400CD8A1B /* MemoryGame.swift */; };
+		AA23487727267B9C00CD8A1B /* DogMemoryGameStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA23487627267B9C00CD8A1B /* DogMemoryGameStore.swift */; };
+		AA23487827267B9C00CD8A1B /* DogMemoryGameStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA23487627267B9C00CD8A1B /* DogMemoryGameStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AA23484F272679AF00CD8A1B /* GameAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAppApp.swift; sourceTree = "<group>"; };
-		AA234850272679AF00CD8A1B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AA234851272679AF00CD8A1B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA234856272679AF00CD8A1B /* GameApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA234859272679AF00CD8A1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA23485E272679AF00CD8A1B /* GameApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA234860272679AF00CD8A1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA234861272679AF00CD8A1B /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		AA23487027267A0A00CD8A1B /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AA23487327267A4400CD8A1B /* MemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryGame.swift; sourceTree = "<group>"; };
+		AA23487627267B9C00CD8A1B /* DogMemoryGameStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogMemoryGameStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +64,10 @@
 			isa = PBXGroup;
 			children = (
 				AA23484F272679AF00CD8A1B /* GameAppApp.swift */,
-				AA234850272679AF00CD8A1B /* ContentView.swift */,
+				AA23487027267A0A00CD8A1B /* ContentView.swift */,
 				AA234851272679AF00CD8A1B /* Assets.xcassets */,
+				AA23487327267A4400CD8A1B /* MemoryGame.swift */,
+				AA23487627267B9C00CD8A1B /* DogMemoryGameStore.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -187,7 +195,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA234864272679AF00CD8A1B /* ContentView.swift in Sources */,
+				AA23487427267A4400CD8A1B /* MemoryGame.swift in Sources */,
+				AA23487727267B9C00CD8A1B /* DogMemoryGameStore.swift in Sources */,
+				AA23487127267A0A00CD8A1B /* ContentView.swift in Sources */,
 				AA234862272679AF00CD8A1B /* GameAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -196,7 +206,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA234865272679AF00CD8A1B /* ContentView.swift in Sources */,
+				AA23487527267A4400CD8A1B /* MemoryGame.swift in Sources */,
+				AA23487827267B9C00CD8A1B /* DogMemoryGameStore.swift in Sources */,
+				AA23487227267A0A00CD8A1B /* ContentView.swift in Sources */,
 				AA234863272679AF00CD8A1B /* GameAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

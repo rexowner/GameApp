@@ -8,12 +8,12 @@
 import Foundation
 
 struct MemoryGame {
-    private var cards: Array<Card>
-    private var numberOfPairs: Int
+    private(set) var cards: Array<Card>
+    private(set) var numberOfPairs: Int
     
-    struct Card {
+    struct Card: Identifiable {
         var content: String
-        var isFaceUp: Bool = false
+        var isFaceUp: Bool = true
         var isMatched: Bool = false
         var id: Int
     }
@@ -30,5 +30,6 @@ struct MemoryGame {
             cards.append(Card(content: content, id: index * 2))
             cards.append(Card(content: content, id: index * 2 + 1 ))
         }
+        cards.shuffle()
     }
 }

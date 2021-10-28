@@ -22,4 +22,12 @@ class DogMemoryGameStore: ObservableObject {
                         ]
         return dogImages[index]
     }
+    
+    var cards: Array<MemoryGame.Card> {
+        model.cards
+    }
+    
+    var pairs: Int {
+        model.numberOfPairs
+    }
 }

@@ -2,7 +2,11 @@
 //  GameAppApp.swift
 //  Shared
 //
-//  Created by Les Poltrack on 10/24/21.
+//  CIS 137
+//  Partner Lab 3
+//  Conrad Boucher & Les Poltrack
+//  Oct 27, 2021
+//
 //
 
 import SwiftUI

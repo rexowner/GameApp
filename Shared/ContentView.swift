@@ -3,9 +3,9 @@
 //  Shared
 //
 //  CIS 137
-//  Partner Lab 2
+//  Partner Lab 3
 //  Conrad Boucher & Les Poltrack
-//  Oct 22, 2021
+//  Oct 27, 2021
 //
 
 import SwiftUI

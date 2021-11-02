@@ -11,18 +11,23 @@
 
 import Foundation
 
-struct MemoryGame {
+struct  MemoryGame {
     private(set) var cards: Array<Card>
     private(set) var numberOfPairs: Int
     
-    struct Card: Identifiable {
+    struct Card: Identifiable { // Struct
         var content: String
-        var isFaceUp: Bool = true
+        var isFaceUp: Bool = false
         var isMatched: Bool = false
         var id: Int
     }
     
-    func chooseCard(card: Card) {
+    mutating func chooseCard(_ card: Card) {
+        for index in cards.indices {
+            if cards[index].id == card.id {
+                cards[index].isFaceUp.toggle()
+            }
+        }
     }
     
     init(numberOfPairsOfCards: Int, contentFactory: (Int)->String) {

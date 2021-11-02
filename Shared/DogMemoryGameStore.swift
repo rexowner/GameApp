@@ -12,10 +12,13 @@
 import SwiftUI
 
 class DogMemoryGameStore: ObservableObject {
+    
+    static let numPairs = 6
+    
     @Published private var model: MemoryGame = CreateMemoryGame()
     
     static func CreateMemoryGame() -> MemoryGame {
-        return MemoryGame(numberOfPairsOfCards: 4, contentFactory: makeContent)
+        return MemoryGame(numberOfPairsOfCards: numPairs, contentFactory: makeContent)
     }
     
     static func makeContent(index: Int) -> String {
@@ -33,5 +36,9 @@ class DogMemoryGameStore: ObservableObject {
     
     var pairs: Int {
         model.numberOfPairs
+    }
+    
+    func choose(_ card: MemoryGame.Card) {
+        model.chooseCard(card)
     }
 }

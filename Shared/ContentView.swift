@@ -47,6 +47,9 @@ struct ContentView: View {
                         .cornerRadius(10)
                         .overlay(
                             RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 4))
+                        .onTapGesture {
+                            viewModel.choose(card)
+                        }
                         
                 }
             }
@@ -70,9 +73,6 @@ struct ContentView: View {
                 Rectangle().foregroundColor(.blue)
                     .frame(width: width, height: height)
                     .opacity(card.isFaceUp ? 0 : 1)
-            }
-            .onTapGesture {
-                //isFaceUp = !isFaceUp
             }
         }
     }

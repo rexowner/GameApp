@@ -3,17 +3,20 @@
 //  GameApp
 //
 //  CIS 137
-//  Partner Lab 3
+//  Partner Lab 4
 //  Conrad Boucher & Les Poltrack
-//  Oct 27, 2021
+//  Nov 11, 2021
 //
 //
+
+// This file is the ViewModel for the game
+
 
 import SwiftUI
 
 class DogMemoryGameStore: ObservableObject {
     
-    static let numPairs = 6
+    static let numPairs = 9
     
     @Published private var model: MemoryGame = CreateMemoryGame()
     
@@ -38,7 +41,11 @@ class DogMemoryGameStore: ObservableObject {
         model.numberOfPairs
     }
     
+    var foundMatch: Bool {
+        model.foundMatch
+    }
+    
     func choose(_ card: MemoryGame.Card) {
-        model.chooseCard(card)
+       model.chooseCard(card)
     }
 }

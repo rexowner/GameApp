@@ -3,9 +3,10 @@
 //  GameApp
 //
 //  CIS 137
-//  Partner Lab 4
+//  Lab #4
 //  Conrad Boucher & Les Poltrack
-//  Nov 11, 2021
+//  Nov 10, 2021
+//
 //
 //
 
@@ -16,7 +17,7 @@ import SwiftUI
 
 class DogMemoryGameStore: ObservableObject {
     
-    static let numPairs = 9
+    static let numPairs = 6
     
     @Published private var model: MemoryGame = CreateMemoryGame()
     
@@ -37,8 +38,12 @@ class DogMemoryGameStore: ObservableObject {
         model.cards
     }
     
-    var pairs: Int {
+    var totalPairs: Int {
         model.numberOfPairs
+    }
+    
+    var pairsMatched: Int {
+        model.pairsMatched
     }
     
     var foundMatch: Bool {

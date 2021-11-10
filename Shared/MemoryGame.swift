@@ -3,9 +3,10 @@
 //  GameApp
 //
 //  CIS 137
-//  Partner Lab 4
+//  Lab #4
 //  Conrad Boucher & Les Poltrack
-//  Nov 11, 2021
+//  Nov 10, 2021
+//
 //
 //
 
@@ -16,8 +17,8 @@ import Foundation
 struct  MemoryGame {
     private(set) var cards: Array<Card>
     private(set) var numberOfPairs: Int
-    private var numberOfMatches: Int
-    private var numberUnMarchedFaceUp: Int
+    private(set) var pairsMatched: Int
+    private var numberUnMatchedFaceUp: Int
     private(set) var foundMatch: Bool
 
     struct Card: Identifiable { // Struct
@@ -29,14 +30,14 @@ struct  MemoryGame {
     
     mutating func chooseCard(_ card: Card) {
         foundMatch = false
-        numberUnMarchedFaceUp += 1
-        if numberUnMarchedFaceUp == 3 {
+        numberUnMatchedFaceUp += 1
+        if numberUnMatchedFaceUp == 3 {
             for index in cards.indices { // Put all unmatched cards face down
                 if !cards[index].isMatched {
                     cards[index].isFaceUp = false
                 }
             }
-            numberUnMarchedFaceUp = 1
+            numberUnMatchedFaceUp = 1
         }
         for index in cards.indices {
             if cards[index].id == card.id {
@@ -46,6 +47,8 @@ struct  MemoryGame {
             if (card.content  == cards[index].content) && (cards[index].isFaceUp) && (cards[index].id != card.id) {
                 cards[index].isMatched = true //Found a match -- match other card
                 foundMatch = true
+                pairsMatched += 1
+                
                 // Can't use "card.isMatched = true" since it's a let constant,
                 // so just look through array and match first card anyway - kind of a hack, but it works
                 for anotherindex in cards.indices {
@@ -60,8 +63,8 @@ struct  MemoryGame {
     init(numberOfPairsOfCards: Int, contentFactory: (Int)->String) {
         cards = []
         numberOfPairs = numberOfPairsOfCards
-        numberUnMarchedFaceUp = 0
-        numberOfMatches = 0
+        pairsMatched = 0
+        numberUnMatchedFaceUp = 0
         
         for index in 0..<numberOfPairsOfCards {
             let content = contentFactory(index)

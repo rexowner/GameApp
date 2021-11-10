@@ -3,9 +3,10 @@
 //  Shared
 //
 //  CIS 137
-//  Partner Lab 4
+//  Lab #4
 //  Conrad Boucher & Les Poltrack
-//  Nov 11, 2021
+//  Nov 10, 2021
+//
 //
 
 import SwiftUI
@@ -46,7 +47,9 @@ struct ContentView: View {
             !foundMatch ?
                 Text("Match the Dogs!").font(.largeTitle).foregroundColor(.green).bold() :
                 Text("Found a Match!").font(.largeTitle).foregroundColor(.black).bold()
-            
+            ProgressView("\(viewModel.pairsMatched) of \(viewModel.totalPairs) Pairs Matched (outlined in red)",
+                         value: Float(viewModel.pairsMatched), total: Float(viewModel.totalPairs))
+                .progressViewStyle((LinearProgressViewStyle(tint: .red)))
             LazyVGrid(columns: gridItems, alignment: .leading, spacing: cellSpacing) {
                 ForEach(viewModel.cards) { card in
                     CardView(card: card, height: cellHeight, width: cellWidth)

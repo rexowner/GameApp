@@ -118,7 +118,9 @@ struct ContentView: View {
                                 .stroke(Color.red,
                                         lineWidth: card.isMatched ? 2 : 0))
                         .onTapGesture {
-                            viewModel.choose(card)
+                            if viewModel.isRunning {
+                                viewModel.choose(card)
+                            }
                         }
                 }
             }

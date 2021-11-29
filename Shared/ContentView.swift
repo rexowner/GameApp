@@ -19,8 +19,13 @@ struct ContentView: View {
     let cellWidth: CGFloat // Width of each Cell
     let cellHeight: CGFloat // Width of each Cell
     let cellSpacing: CGFloat // space cells apart same horizontally and vertically
-    
     let gridItems: [GridItem]
+    
+    // START ADD FOR LAB 5
+    @State var time = 0
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State private var showingAlert = false
+    // END ADD FOR LAB 5
     
     var foundMatch: Bool {
         return viewModel.foundMatch
@@ -44,12 +49,66 @@ struct ContentView: View {
     // BODY
     var body: some View {
         ScrollView(.vertical){
-            !foundMatch ?
+            viewModel.gameOver ? Text("Play Again?")
+                .font(.largeTitle)
+                .foregroundColor(.green)
+                .bold()
+            :
+            (!foundMatch ?
                 Text("Match the Dogs!").font(.largeTitle).foregroundColor(.green).bold() :
-                Text("Found a Match!").font(.largeTitle).foregroundColor(.black).bold()
+                Text("Found a Match!").font(.largeTitle).foregroundColor(.black).bold())
+            
+            
             ProgressView("\(viewModel.pairsMatched) of \(viewModel.totalPairs) Pairs Matched (outlined in red)",
                          value: Float(viewModel.pairsMatched), total: Float(viewModel.totalPairs))
                 .progressViewStyle((LinearProgressViewStyle(tint: .red)))
+
+            
+            HStack {
+                // START: START, STOP, NEW_GAME BUTTONS
+                ZStack {
+                    Button("Start", action: {
+                        viewModel.startTimer()
+                    })
+                        .font(.largeTitle)
+                        .opacity(viewModel.isRunning || viewModel.gameOver ? 0.0 : 1.0)
+                           
+                    Button("Stop", action: {
+                        viewModel.pauseGame()
+                        showingAlert = true
+                    })
+                        .font(.largeTitle)
+                        .opacity(!viewModel.isRunning ? 0.0 : 1.0)
+                        .alert(isPresented: $showingAlert) {
+                            Alert(title: Text("Are you sure?"), message: Text("Stopping will end game."),
+                                  primaryButton: .destructive(Text("End Game")) {
+                                      print("End Game")
+                                viewModel.resetGame()
+                                time = 0
+                                  },
+                                  secondaryButton: .cancel() {
+                                viewModel.startTimer()
+                            })
+                    }
+                    Button("New Game", action: {
+                        time = 0
+                        viewModel.resetGame()
+                    })
+                        .font(.largeTitle)
+                        .opacity(viewModel.gameOver ? 1.0 : 0.0)
+                }
+                // START: START, STOP, NEW_GAME BUTTONS
+
+                Spacer()
+                // SHOW THE TIME IN SECONDS
+                Text("Time: \(time) \(time == 1 ? "second" : "seconds")")
+                    .onReceive(timer){_ in
+                        viewModel.isRunning ?
+                        time += 1 : nil
+                }
+                    .font(.title)
+         
+            }
             LazyVGrid(columns: gridItems, alignment: .leading, spacing: cellSpacing) {
                 ForEach(viewModel.cards) { card in
                     CardView(card: card, height: cellHeight, width: cellWidth)
@@ -97,8 +156,6 @@ struct ContentView: View {
             .animation(.easeInOut(duration: 1))
         }
     }
-    
-
 }
 
 

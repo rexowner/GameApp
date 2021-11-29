@@ -34,23 +34,39 @@ class DogMemoryGameStore: ObservableObject {
         return dogImages[index]
     }
     
-    var cards: Array<MemoryGame.Card> {
+    var cards: Array<MemoryGame.Card> { get {
         model.cards
-    }
+    }}
     
-    var totalPairs: Int {
+    var totalPairs: Int { get {
         model.numberOfPairs
-    }
+    }}
     
-    var pairsMatched: Int {
+    var pairsMatched: Int { get {
         model.pairsMatched
-    }
+    }}
     
-    var foundMatch: Bool {
+    var foundMatch: Bool { get{
         model.foundMatch
-    }
+    }}
+    var isRunning: Bool { get {
+        model.isRunning
+    }}
+    var gameOver: Bool { get {
+        model.gameOver
+    }}
     
     func choose(_ card: MemoryGame.Card) {
        model.chooseCard(card)
+    }
+    
+    func resetGame() {
+        model.rebuildModel()
+    }
+    func startTimer() {
+        model.startTimer()
+    }
+    func pauseGame() {
+        model.pauseGame()
     }
 }

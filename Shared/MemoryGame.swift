@@ -13,6 +13,7 @@
 // This file is the Model for the game
 
 import Foundation
+import SwiftUI
 
 struct  MemoryGame {
     private(set) var cards: Array<Card>
@@ -20,6 +21,9 @@ struct  MemoryGame {
     private(set) var pairsMatched: Int
     private var numberUnMatchedFaceUp: Int
     private(set) var foundMatch: Bool
+    private(set) var gamesPlayed = 0
+    private(set) var isRunning = false
+    private(set) var gameOver = false
 
     struct Card: Identifiable { // Struct
         var content: String
@@ -58,6 +62,10 @@ struct  MemoryGame {
                 }
             }
         }
+        if pairsMatched == numberOfPairs {
+            isRunning = false
+            gameOver = true
+        }
     }
     
     init(numberOfPairsOfCards: Int, contentFactory: (Int)->String) {
@@ -72,6 +80,32 @@ struct  MemoryGame {
             cards.append(Card(content: content, id: index * 2 + 1 ))
         }
         cards.shuffle()
+        foundMatch = false
+    }
+    
+    mutating func rebuildModel() {
+        for i in 0..<numberOfPairs {
+            cards[i].isMatched = false
+            cards[i].isFaceUp = false
+            cards[i+numberOfPairs].isMatched = false
+            cards[i+numberOfPairs].isFaceUp = false
+            // TODO: RESET OTHER VARIABLES..
+        }
+        pairsMatched = 0
+        numberUnMatchedFaceUp = 0
+        foundMatch = false
+        gamesPlayed += 1
+        isRunning = false
+        gameOver = false
+        
+        cards.shuffle()
+    }
+    mutating func startTimer() {
+        isRunning = true
+    }
+    
+    mutating func pauseGame() {
+        isRunning = false
         foundMatch = false
     }
 }
